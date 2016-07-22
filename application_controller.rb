@@ -14,7 +14,7 @@ class ApplicationController < Sinatra::Base
     @title = "page2"
 	  @lat_lng = format_request_and_send_api_call(params[:user_input])
 	  @places = format_request_and_send_api_call_to_places(@lat_lng[0],@lat_lng[1])
-	  @articles = generate_wiki_link(@places.first)
+	  @articles = generate_wiki_link(@places)
     erb :page2
   end
 

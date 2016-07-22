@@ -51,20 +51,39 @@ def generate_wiki_link(name)
     response = Net::HTTP.get(uri)
     formatted_data = JSON.parse(response)
     
-    # wiki_names = []
+    formatted_name.each do |place|
+        "https://en.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&exlimit=max&explaintext&exintro&titles=#{place}"
+    end
     
-    # names.each do |name|
-    #     formatted_name = name.gsub(" ", "_")
-    #     wiki_names << "https://en.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&exlimit=max&explaintext&exintro&titles=#{formatted_name}"
-    # end
+    if names[:"query"][:"pages"].keys.include?(:"-1")
+    	"Don't display"
+    else
+    	response[:"query"][:"pages"].values.first[:"title"]
+		response[:"query"][:"pages"].values.first[:"extract"]
+    end
     
-#     if names[:"query"][:"pages"].keys.include?(:"-1")
-#     	"Don't display"
-#     else
-#     	response[:"query"][:"pages"].values.first[:"title"]
-# 		response[:"query"][:"pages"].values.first[:"extract"]
-#     end
-  
+    if names[:"query"][:"pages"].values.first:[:"title"] == "New York"
+        "Don't display"
+    else 
+        response[:"query"][:"pages"].values.first[:"title"]
+		response[:"query"][:"pages"].values.first[:"extract"]
+	end 
+	
+	if names[:"query"][:"pages"].values.first:[:"title"].include?(:"Hotel")
+	    "Don't Display"
+	else 
+	    response[:"query"][:"pages"].values.first[:"title"]
+	    response[:"query"][:"pages"].values.first[:"extract"]
+	end 
+	
+	if names[:"query"][:"pages"].values.first:[:"title"] == "Inn"
+	    "Don't Display"
+	else 
+	    response[:"query"][:"pages"].values.first[:"title"]
+	    response[:"query"][:"pages"].values.first[:"extract"]
+	end 
+	
+      
 end 
 
 
