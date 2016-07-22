@@ -1,12 +1,25 @@
 <head>
+<link rel="stylesheet" type="type/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 <link rel="stylesheet" type="type/css" href="css/style.css">
+
+<style>
+    
+    .wiki-article {
+        padding: 5px;
+    }
+</style>
 </head>
 
-<h1> style="color: black" Histopedia</h1>
-<h2> style="color: black" Explore the World Around You.</h2>
+<h1> Histopedia</h1>
+<h2> Explore the World Around You.</h2>
 
 
-<div class="wiki-article">
-    <h6> style="color:black;border-style:solid;border-color:orange;background-color:white" <%= @articles %></h6>
-    
+<div class="wiki-article" style="background-color: white; padding: 5px; color: black; text-align: justify;">
+    <% @articles.each do |article| %>
+        <strong><%= article[:title] %></strong>
+        <br>
+        <p><%= article[:extract] %></p>
+        <br>
+    <%end%>
+
 </div>
