@@ -27,11 +27,14 @@ def format_request_and_send_api_call_to_places(lat,lng)
 end
 
 def make_api_call_to_places(request_string)
+<<<<<<< HEAD
     
     uri = URI(request_string)
     response = Net::HTTP.get(uri)
     formatted_data = JSON.parse(response)
-    
+    uri = URI(request_string)
+    response = Net::HTTP.get(uri)
+    formatted_data = JSON.parse(response)
     @answer_array = []
     formatted_data["results"].each do |thing| 
          @answer_array << thing["name"]
@@ -39,7 +42,7 @@ def make_api_call_to_places(request_string)
     @answer_array
 end 
 
-def calL_wiki_api(formatted_names)
+def calL_wiki_api(formatted_name)
     wiki_request = "https://en.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&exlimit=max&explaintext&exintro&titles=#{formatted_name.gsub(" ","_")}"
     make_api_call(wiki_request)
 end 
@@ -54,10 +57,17 @@ def generate_wiki_link(array)
     #     request_string = "https://en.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&exlimit=max&explaintext&exintro&titles=#{place}"
     # end
     
+
+def generate_wiki_link(name)
+    formatted_name = name.gsub(" ", "_")
+    request_string = "https://en.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&exlimit=max&explaintext&exintro&titles=#{formatted_name}"
+    
+>>>>>>> 16bbc30c14532dc6a4daf2967db75f50e25dbe4b
     uri = URI(request_string)
     response = Net::HTTP.get(uri)
     formatted_data = JSON.parse(response)
     
+<<<<<<< HEAD
     info = formatted_data["query"]["pages"]
     keys = info.keys
     key_id = keys[0]
@@ -113,6 +123,62 @@ end
 
 
     
+=======
+    formatted_name.each do |place|
+        "https://en.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&exlimit=max&explaintext&exintro&titles=#{place}"
+    end
+    
+    if names[:"query"][:"pages"].keys.include?(:"-1")
+    	"Don't display"
+    else
+    	response[:"query"][:"pages"].values.first[:"title"]
+		response[:"query"][:"pages"].values.first[:"extract"]
+    end
+    
+    if names[:"query"][:"pages"].values.first:[:"title"] == "New York"
+        "Don't display"
+    else 
+        response[:"query"][:"pages"].values.first[:"title"]
+		response[:"query"][:"pages"].values.first[:"extract"]
+	end 
+	
+	if names[:"query"][:"pages"].values.first:[:"title"].include?(:"Hotel")
+	    "Don't Display"
+	else 
+	    response[:"query"][:"pages"].values.first[:"title"]
+	    response[:"query"][:"pages"].values.first[:"extract"]
+	end 
+	
+	if names[:"query"][:"pages"].values.first:[:"title"] == "Inn"
+	    "Don't Display"
+	else 
+	    response[:"query"][:"pages"].values.first[:"title"]
+	    response[:"query"][:"pages"].values.first[:"extract"]
+	end 
+	
+      
+end 
+
+def generate_wiki_link(names)
+    wiki_names = []
+    names.each do |name|
+        formatted_name = name.gsub(" ", "_")
+        wiki_names << "https://en.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&exlimit=max&explaintext&exintro&titles=#{formatted_name}"
+    end
+#     if names[:"query"][:"pages"].keys.include?(:"-1")
+#     	"Don't display"
+#     else
+#     	response[:"query"][:"pages"].values.first[:"title"]
+# 		response[:"query"][:"pages"].values.first[:"extract"]
+#     end
+  
+end 
+
+generate_wiki_link(["Name 1"])
+
+
+
+>>>>>>> 16bbc30c14532dc6a4daf2967db75f50e25dbe4b
 # https://en.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&exlimit=max&explaintext&exintro&titles=Empire_State_Building
 # for each name that comes back from Google, send request to Wiki API
 # if results, then display

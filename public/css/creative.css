@@ -43,6 +43,7 @@ p {
   margin-bottom: 20px;
 }
 .bg-primary {
+  background-image: "img/background2.jpg";
   background-image: url("http://wallpapercave.com/wp/Ohj5NR2.png");
 }
 .bg-dark {
