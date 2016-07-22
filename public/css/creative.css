@@ -44,6 +44,7 @@ p {
 }
 .bg-primary {
   background-image: "img/background2.jpg";
+  background-image: url("http://wallpapercave.com/wp/Ohj5NR2.png");
 }
 .bg-dark {
   background-color: blue;
@@ -155,7 +156,11 @@ header {
   background-size: cover;
   -o-background-size: cover;
   background-position: center;
+<<<<<<< HEAD
   background-image: "img/background1.jpg";
+=======
+  background-image: none;
+>>>>>>> 4bca4ae9bb911c662c6faa13d02f30357cf77a41
   text-align: center;
   color: black;
 }

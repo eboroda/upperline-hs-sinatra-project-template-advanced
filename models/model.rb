@@ -42,7 +42,6 @@ def calL_wiki_api(formatted_name)
     make_api_call(wiki_request)
 end 
     
-
 def generate_wiki_link(name)
     formatted_name = name.gsub(" ", "_")
     request_string = "https://en.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&exlimit=max&explaintext&exintro&titles=#{formatted_name}"
@@ -86,7 +85,22 @@ def generate_wiki_link(name)
       
 end 
 
+def generate_wiki_link(names)
+    wiki_names = []
+    names.each do |name|
+        formatted_name = name.gsub(" ", "_")
+        wiki_names << "https://en.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&exlimit=max&explaintext&exintro&titles=#{formatted_name}"
+    end
+#     if names[:"query"][:"pages"].keys.include?(:"-1")
+#     	"Don't display"
+#     else
+#     	response[:"query"][:"pages"].values.first[:"title"]
+# 		response[:"query"][:"pages"].values.first[:"extract"]
+#     end
+  
+end 
 
+generate_wiki_link(["Name 1"])
 
 
 
