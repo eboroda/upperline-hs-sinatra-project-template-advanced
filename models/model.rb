@@ -75,6 +75,7 @@ def generate_wiki_link(array)
 
     
         
+        
 #     if names[:"query"][:"pages"].values.first:[:"title"] == "New York"
 #         "Don't display"
 #     else 
